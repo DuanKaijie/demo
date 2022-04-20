@@ -43,7 +43,7 @@ public class TestController {
     public String addUser(@RequestBody User user) throws Exception {
         if (null != user) {
             userService.insertUser(user);
-            return "success";
+            return "successkaijie";
         } else {
             return "false";
         }
