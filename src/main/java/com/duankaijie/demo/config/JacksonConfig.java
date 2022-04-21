@@ -18,6 +18,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
 // 使用阿里巴巴的fastJson时，把jackson的配置注释掉
+
 /*
 @Configuration
 public class JacksonConfig {
@@ -34,4 +35,6 @@ public class JacksonConfig {
         });
         return objectMapper;
     }
-}*/
+}
+
+ */
