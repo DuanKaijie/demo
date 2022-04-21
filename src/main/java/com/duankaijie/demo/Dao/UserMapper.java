@@ -20,7 +20,7 @@ public interface UserMapper {
     @Select("select * from user")
     List<User> getAll();
 
-    @Insert("insert into user (user_name, password) values (#{username}, #{password})")
+    @Insert("insert into user (id, user_name, password) values (#{id}, #{username}, #{password})")
     Integer insertUser(User user);
 
     // 使用xml方式
