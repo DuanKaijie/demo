@@ -20,7 +20,7 @@ public class MyServletRequestListener implements ServletRequestListener {
         logger.info("session id为：{}", request.getRequestedSessionId());
         logger.info("request url为：{}", request.getRequestURL());
 
-        request.setAttribute("name", "倪升武");
+        request.setAttribute("name", "段凯杰");
     }
 
     @Override

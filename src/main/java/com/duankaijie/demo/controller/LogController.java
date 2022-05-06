@@ -21,7 +21,7 @@ public class LogController {
         // 可以使用占位符打印出一些参数信息
         String str1 = "blog.itcodai.com";
         String str2 = "blog.csdn.net/eson_15";
-        logger.info("======倪升武的个人博客：{}；倪升武的CSDN博客：{}", str1, str2);
+        logger.info("======凯杰的个人博客：{}；凯杰的CSDN博客：{}", str1, str2);
 
         return "success";
     }
