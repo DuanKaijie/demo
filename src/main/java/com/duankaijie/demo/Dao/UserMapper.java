@@ -4,6 +4,7 @@ import com.duankaijie.demo.entity.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Set;
 
 public interface UserMapper {
 
@@ -22,6 +23,15 @@ public interface UserMapper {
 
     @Insert("insert into user (id, user_name, password) values (#{id}, #{username}, #{password})")
     Integer insertUser(User user);
+
+    @Update("update user Set password = #{password} where user_name = #{username} ")
+    Integer updateUser(User user);
+
+
+
+    @Delete("delete from user where id = #{id} ")
+    void deleteUser(long id);
+
 
     // 使用xml方式
     User getUserByName(String username);

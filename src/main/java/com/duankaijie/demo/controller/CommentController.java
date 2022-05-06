@@ -1,4 +1,4 @@
-package com.duankaijie.demo.Controller;
+package com.duankaijie.demo.controller;
 
 /**
  * @version 1.0
@@ -51,7 +51,7 @@ public class CommentController {
      * @return
      */
     @GetMapping("/user")
-    public String testRequestParam(@RequestParam Integer id) {
+    public String testRequestParam(Integer id) {
         System.out.println("获取到的id为：" + id);
         return "success";
     }

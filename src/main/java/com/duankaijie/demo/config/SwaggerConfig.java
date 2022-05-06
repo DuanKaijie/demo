@@ -41,7 +41,7 @@ public class SwaggerConfig {
                 // 设置页面标题
                 .title("Spring Boot集成Swagger2接口总览")
                 // 设置接口描述
-                .description("跟武哥一起学Spring Boot第06课")
+                .description("接口信息")
                 // 设置联系方式
                 .contact(new Contact("段凯杰", "http://www.duankaijie.com",
                         "kaijieduan@163.com") )

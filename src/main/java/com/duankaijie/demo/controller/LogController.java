@@ -1,4 +1,4 @@
-package com.duankaijie.demo.Controller;
+package com.duankaijie.demo.controller;
 
 
 import org.slf4j.Logger;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 public class LogController {
-    private final static Logger logger = LoggerFactory.getLogger(TestController.class);
+    private final static Logger logger = LoggerFactory.getLogger(DateBaseController.class);
 
     @RequestMapping("/log")
     public String testLog() {
