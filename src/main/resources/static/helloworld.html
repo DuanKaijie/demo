@@ -13,8 +13,10 @@
 </head>
 <body>
 <div id="cesiumContainer"></div>
-<script >
-  var viewer = new Cesium.Viewer('cesiumContainer');
+<script  type="module" >
+  Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxYTRjYWE4MC05ZGYyLTQyODItOGVmMC04ODg3NjYyNWNiODMiLCJpZCI6OTI4OTgsImlhdCI6MTY1MjA2MTQ1Nn0.D-sfWxYoWc4RovUlTnvK9ikzfll-f6FIpQ-UmWXEgiI';
+  const viewer = new Cesium.Viewer('cesiumContainer');
 </script>
+
 </body>
 </html>

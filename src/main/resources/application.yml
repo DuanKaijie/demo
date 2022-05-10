@@ -7,8 +7,6 @@ datasource:
   url: localhost:3306/blog_test
 
 spring:
-#  resources:
-#    static-locations: classpath:/static/
   datasource: # 数据库配置
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://${datasource.url}?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false&maxReconnects=10
@@ -20,6 +18,10 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+    static-path-pattern: /static/**
+#  web:
+#    resources:
+#      static-locations: classpath:/static/**
 
 mybatis:
   # 指定别名设置的包为所有entity

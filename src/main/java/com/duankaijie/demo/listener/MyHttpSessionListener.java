@@ -22,6 +22,7 @@ public class MyHttpSessionListener implements HttpSessionListener {
     public synchronized void sessionCreated(HttpSessionEvent httpSessionEvent) {
         logger.info("新用户上线了");
         count++;
+        //在这也是通过session得到了ServletContext，信息储存在了application域中，因为储存的是不同的session信息
         httpSessionEvent.getSession().getServletContext().setAttribute("count", count);
     }
 

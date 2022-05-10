@@ -23,7 +23,7 @@ public class ListenerController {
 
     @GetMapping("/user")
     public User getUser(HttpServletRequest request) {
-        ServletContext application = request.getServletContext();
+        ServletContext application = request.getServletContext();//这里表示可以使用request直接的得到ServletContext
         return (User) application.getAttribute("user");
     }
 
@@ -57,7 +57,7 @@ public class ListenerController {
 
     @GetMapping("/request")
     public String getRequestInfo(HttpServletRequest request) {
-        System.out.println("requestListener中的初始化的name数据：" + request.getAttribute("name"));
+        //System.out.println("requestListener中的初始化的name数据：" + request.getAttribute("name"));
         return "success";
     }
 
