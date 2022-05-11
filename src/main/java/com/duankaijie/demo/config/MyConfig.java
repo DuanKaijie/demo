@@ -6,10 +6,7 @@ package com.duankaijie.demo.config;
  */
 import com.duankaijie.demo.interceptor.MyInterceptor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
 * 自定义拦截器的配置，继承WebMvcConfigurationSupport会导致Spring Boot对mvc的自动配置失效，但可以在前后端分离项目中
@@ -18,8 +15,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 */
 // @Configuration
 // public class MyInterceptorConfig extends WebMvcConfigurationSupport {
-
-
+//
+//
 //    /**
 //     * 用来指定静态资源不被拦截，否则继承WebMvcConfigurationSupport这种方式会导致静态资源无法直接访问
 //     * @param registry
@@ -32,7 +29,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //
 //     @Override
 //     protected void addInterceptors(InterceptorRegistry registry) {
-//         registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").excludePathPatterns("/login", "/register", "/","/static/**");;
+//         registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**");
 //         super.addInterceptors(registry);
 //     }
 //
@@ -43,14 +40,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
      * 自定义拦截器的配置，实现WebMvcConfigurer不会导致Spring Boot对mvc的自动配置失效，可以用在非前后端分离的项目中
      */
     @Configuration
-    public class MyInterceptorConfig implements WebMvcConfigurer {
+    public class MyConfig implements WebMvcConfigurer {
 
 
         @Override
         public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-            registry.addResourceHandler("/**")
-                    .addResourceLocations("/static/**");
+            // registry.addResourceHandler("/**")
+            //         .addResourceLocations("/static/**");
+            //重写addResourceHandlers()方法，给静态资源请求添加映射，
+            // 将路径中包括/static/的静态资源访问映射到resources/static/目录下
+            //addResourceHandler添加映射路径，然后通过addResourceLocations来指定路径
+            registry.addResourceHandler("/static/**")
+                    .addResourceLocations("classpath:/static/");
 
             registry.addResourceHandler("swagger-ui.html")
                     .addResourceLocations("classpath:/META-INF/resources/");
@@ -60,11 +62,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         }
 
 
+
         @Override
         public void addInterceptors(InterceptorRegistry registry) {
             // 实现WebMvcConfigurer不会导致静态资源被拦截
-            registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").excludePathPatterns("/login", "/register", "/", "/static/**");
+            registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**")
+                    .excludePathPatterns("/login", "/register", "/", "/static/**")
+                    .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
         }
+
+
 
     }
 
