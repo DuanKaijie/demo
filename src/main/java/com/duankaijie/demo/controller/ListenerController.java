@@ -1,7 +1,7 @@
 package com.duankaijie.demo.controller;
 
 import com.duankaijie.demo.entity.User;
-import com.duankaijie.demo.Service.UserService;
+import com.duankaijie.demo.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

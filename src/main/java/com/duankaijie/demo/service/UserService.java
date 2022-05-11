@@ -1,10 +1,6 @@
-package com.duankaijie.demo.Service;
+package com.duankaijie.demo.service;
 
 import com.duankaijie.demo.entity.User;
-import com.duankaijie.demo.event.MyEvent;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

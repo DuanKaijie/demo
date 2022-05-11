@@ -1,7 +1,7 @@
-package com.duankaijie.demo.Service.impl;
+package com.duankaijie.demo.service.impl;
 
 import com.duankaijie.demo.Dao.UserMapper;
-import com.duankaijie.demo.Service.UserService;
+import com.duankaijie.demo.service.UserService;
 import com.duankaijie.demo.entity.User;
 import com.duankaijie.demo.event.MyEvent;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,6 @@ import java.util.List;
 
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {

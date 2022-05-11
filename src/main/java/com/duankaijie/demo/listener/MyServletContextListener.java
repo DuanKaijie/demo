@@ -1,8 +1,7 @@
 package com.duankaijie.demo.listener;
 
-import com.duankaijie.demo.Service.UserService;
+import com.duankaijie.demo.service.UserService;
 import com.duankaijie.demo.entity.User;
-import com.duankaijie.demo.Service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;

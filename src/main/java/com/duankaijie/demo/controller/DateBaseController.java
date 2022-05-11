@@ -1,6 +1,6 @@
 package com.duankaijie.demo.controller;
 
-import com.duankaijie.demo.Service.UserService;
+import com.duankaijie.demo.service.UserService;
 import com.duankaijie.demo.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
