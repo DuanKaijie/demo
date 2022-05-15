@@ -1,5 +1,6 @@
 package com.duankaijie.demo.entity;
 
+
 public class Blogger {
 
     private Long id;

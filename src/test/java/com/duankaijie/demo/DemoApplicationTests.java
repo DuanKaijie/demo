@@ -40,10 +40,14 @@ class DemoApplicationTests {
         redisService.setHash("user","name", JSON.toJSONString(user));
         logger.info("用户姓名：{}", redisService.getHash("user","name"));
 
+        //测试redis的hash类型
+        redisService.setHash("user","name", JSON.toJSONString(user));
+        logger.info("用户姓名：{}", redisService.getHash("user","name"));
+
         //测试redis的list类型
-        // redisService.setList("list", "football");
-        // redisService.setList("list", "basketball");
-        List<String> valList = redisService.getList("list",0,-2);
+         redisService.setList("list", "football");
+         redisService.setList("list", "basketball");
+        List<String> valList = redisService.getList("list",0,-1);
         for(String value :valList){
             logger.info("list中有：{}", value);
         }
