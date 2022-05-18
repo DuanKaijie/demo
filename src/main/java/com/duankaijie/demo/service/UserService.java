@@ -1,8 +1,11 @@
 package com.duankaijie.demo.service;
 
+import com.duankaijie.demo.Dao.UserDao;
 import com.duankaijie.demo.entity.User;
 
+import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 public interface UserService {
     User getUser(Long id);
@@ -19,10 +22,11 @@ public interface UserService {
 
      User getUser2();
 
+    public User getByUsername(String username);
 
+    public Set<String> getRoles(String username);
 
-
-
+    public Set<String> getPermissions(String username);
 
 
 

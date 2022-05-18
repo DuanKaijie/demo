@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,27 +23,38 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        HandlerMethod handlerMethod = (HandlerMethod) handler;
-        Method method = handlerMethod.getMethod();
-        String methodName = method.getName();
-        // logger.info("====拦截到了方法：{}，在该方法执行之前执行====", methodName);
+        if(handler instanceof ResourceHttpRequestHandler) {
+            logger.info("---------ResourceHttpRequestHandler-------" + handler.toString() + "------------");
+            // return true;
+        } else if(handler instanceof HandlerMethod) {
+            logger.info("--------HandlerMethod--------" + handler.toString() + "------------");
 
-        // 通过方法，可以获取该方法上的自定义注解，然后通过注解来判断该方法是否要被拦截
-        // @UnInterception 是我们自定义的注解
-        UnInterception unInterception = method.getAnnotation(UnInterception.class);
-        if (null != unInterception) {//在这的意思是unInterception有存在的数值，就可以不拦截
-            return true;
+            HandlerMethod handlerMethod = (HandlerMethod) handler;
+            Method method = handlerMethod.getMethod();
+            String methodName = method.getName();
+            // logger.info("====拦截到了方法：{}，在该方法执行之前执行====", methodName);
+
+            // 通过方法，可以获取该方法上的自定义注解，然后通过注解来判断该方法是否要被拦截
+            // @UnInterception 是我们自定义的注解
+            UnInterception unInterception = method.getAnnotation(UnInterception.class);
+            if (null != unInterception) {//在这的意思是unInterception有存在的数值，就可以不拦截
+                return true;
+            }
+
+
+            // 判断用户有没有登陆，一般登陆之后的用户都有一个对应的token
+            String token = request.getParameter("token");
+            if (null == token || "".equals(token)) {
+                // logger.info("用户未登录，没有权限执行……请登录");
+                return true;
+            }
+
+            // 返回true才会继续执行，返回false则取消当前请求
+            // } else {
+            //     // return true;
+            // }
+            // return true;
         }
-
-
-        // 判断用户有没有登陆，一般登陆之后的用户都有一个对应的token
-        String token = request.getParameter("token");
-        if (null == token || "".equals(token)) {
-            // logger.info("用户未登录，没有权限执行……请登录");
-            return true;
-        }
-
-        // 返回true才会继续执行，返回false则取消当前请求
         return true;
     }
 

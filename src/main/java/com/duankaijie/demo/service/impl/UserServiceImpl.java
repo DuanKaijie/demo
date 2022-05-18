@@ -1,5 +1,6 @@
 package com.duankaijie.demo.service.impl;
 
+import com.duankaijie.demo.Dao.UserDao;
 import com.duankaijie.demo.Dao.UserMapper;
 import com.duankaijie.demo.service.UserService;
 import com.duankaijie.demo.entity.User;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 
 import org.springframework.context.ApplicationContext;
@@ -18,6 +20,8 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private UserDao userDao;
 
     @Override
     public User getUser(Long id) {
@@ -72,6 +76,18 @@ public class UserServiceImpl implements UserService {
         MyEvent event = new MyEvent(this, user);
         applicationContext.publishEvent(event);
         return user;
+    }
+
+    public User getByUsername(String username) {
+        return userDao.getByUsername(username);
+    }
+
+    public Set<String> getRoles(String username) {
+        return userDao.getRoles(username);
+    }
+
+    public Set<String> getPermissions(String username) {
+        return userDao.getPermissions(username);
     }
 
 
